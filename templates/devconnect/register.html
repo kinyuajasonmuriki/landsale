@@ -1,0 +1,70 @@
+{% extends 'devconnect/base.html' %}
+{% load static %}
+{% block title %}Register{% endblock %}
+{% load bootstrap3 %}
+{% load bootstrap_toolkit %}
+{% block content %}
+<br>
+<br>
+<br>
+<div class="container-fluid">
+        <div class="row-fluid">
+        <div class="col-md-5"> 
+           <div class="span8" align="center"> 
+                <h3><strong> Register Account</strong></h3>
+                   
+                <form class="form-signup" action="/register/" method="post">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{message.tags}} alert-dissmissable">
+                            {{message}}
+                        </div>
+                    {% endfor %}
+                {% endif %} 
+                {% csrf_token %}
+                    <div class="fieldWrapper">
+                        <label>First name:</label><br>
+                        {{ form.first_name }}
+                    </div>    
+                    
+                    <div class="fieldWrapper">
+                        <label>Last name:</label><br>
+                        {{ form.last_name }}
+                    </div>   
+                    
+                    <div class="fieldWrapper">    
+                        {{ form.email.errors }}            
+                        <label>E-mail:</label><br>
+                        {{ form.email }}
+                    </div>    
+                    
+                    <div class="fieldWrapper">
+                    {{form.errors.values.0}}                
+                        <label>Username:</label><br>
+                        {{ form.username }}
+                    </div>
+                    
+                    <div class="fieldWrapper">        
+                        {{form.errors.values.1}}            
+                        <label>Password:</label><br>                   
+                        {{ form.password1 }}
+                    </div>
+                    
+                    <div class="fieldWrapper">           
+                        <label>Password again:</label><br>
+                        {{ form.password2 }}
+                    </div>            
+                    <br></br>
+                    <input type="submit" name="submit" class="btn btn-primary btn-large" value="Create account">
+                </form>
+             
+             </div>   
+            </div>
+
+        </div>
+      
+        </div>
+
+        <hr>
+    </div>
+{% endblock %}

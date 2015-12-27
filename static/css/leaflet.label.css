@@ -1,0 +1,38 @@
+.leaflet-label {
+	color: #111;
+	display: block;
+	font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	position: absolute;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	pointer-events: none;
+	white-space: nowrap;
+	z-index: 3;
+}
+
+.leaflet-label.leaflet-clickable {
+	cursor: pointer;
+}
+
+.leaflet-label:before,
+.leaflet-label:after {
+	content: none;
+	position: absolute;
+	top: 5px;
+}
+
+.leaflet-label:before {
+	left: -10px;
+}
+
+.leaflet-label:after {
+	right: -10px;
+}
+
+.leaflet-label-right:before,
+.leaflet-label-left:after {
+	content: "";
+}

@@ -1,0 +1,31 @@
+{% extends 'devconnect/base.html' %}
+{% load django_markdown %}
+{% block content %}
+<div class="container">
+<div class="row-fluid"> 
+        <div class="span8" style="height: 620px;">
+	        <div class="col-sm-8 blog-main">			
+				  <div class="post">
+				    <h1><a href="{% url "developer_detail" slug=object.slug %}">{{ object.name }}</a></h1>
+			
+				   <p>{{object.city}}, Date Since: {{object.date_applied}}</p>
+				    <img height="300" width="300" alt="{{object.name}}" src="{{ object.photo.url}}"/>
+
+				   <p>Skills : {{object.skills}}</p>
+				   <p>Portfolio : {{object.portfolio}}</p>
+				   <p>Projects : {{object.projects}}</p>	
+				   <p>Availability : {{object.availability}}</p>
+				   <p>Available : {{object.available}}</p>	
+
+				   <p><h2><strong>{{ object.name }}'s Location</strong></h2></p>
+				   <img height="400" width="400" alt="{{object.location}}" src="https://maps.googleapis.com/maps/api/staticmap?center={{ object.city}}&size=400x400&maptype=terrain&scale=2"/>    
+				  </div>
+				  <a class="btn btn-large btn-primary" href="{% url "hire" %}">Hire {{object.name}}</a>
+				  <a class="btn btn-large btn-primary" href="{% url "developerinfo" %}">Back to developers list</a>
+				
+			</div>
+		</div>
+	
+</div>
+</div>
+{% endblock %}

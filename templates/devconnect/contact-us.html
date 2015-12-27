@@ -1,0 +1,59 @@
+{% extends 'devconnect/base.html' %}
+{% load static %}
+{% block title %}Contacts{% endblock %}
+{% load bootstrap3 %}
+{% load bootstrap_toolkit %}
+{% block content %}
+ <section id="contact-info">
+        
+    </section>  <!--/gmap_area -->
+    <section id="contact-page">
+        <div class="container">
+            <div class="center">        
+                <h2>Drop Your Message Here</h2>
+                <p class="lead">Fill in the form below to send a message</p>
+            </div> 
+            <div class="row contact-wrap"> 
+                <div class="status alert alert-success" style="display: none"></div>
+                <form method="post" action="/contacts/">{% csrf_token %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{message.tags}} alert-dissmissable">
+                                {{message}}
+                            </div>
+                        {% endfor %}
+                    {% endif %} 
+                    <div class="col-sm-5 col-sm-offset-1">
+                        <div class="form-group">
+                            <label>Subject *</label>
+                            <input type="text" name="subject" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" name="email" class="form-control" required="required">
+                        </div>                       
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label>Message *</label>
+                            <textarea name="message" id="message" required="required" class="form-control" rows="8"></textarea>
+                        </div>                        
+                        <div class="form-group">
+                            <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Submit Message</button>
+                        </div>
+                    </div>
+                </form> 
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#contact-page-->
+   
+
+</section>
+<section class="no-margin">
+       <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15958.888901319548!2d36.957999758862336!3d-0.3976604204379023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ske!4v1447462384679" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </section>
+<!--Bottom-->
+
+<!--/bottom-->
+
+{% endblock %}

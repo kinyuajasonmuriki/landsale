@@ -1,0 +1,28 @@
+{% extends 'devconnect/base.html' %}
+{% load django_markdown %}
+{% block content %}
+<div class="container">
+<div class="row-fluid"> 
+        <div class="span8" style="height: 620px;">
+	        <div class="col-sm-8 blog-main">			
+				  <div class="post">
+				    <h1><a href="{% url "developer_detail" slug=object.slug %}">{{ object.number }}</a></h1>
+			
+				   <p>{{object.id}}, Designated: {{object.designated}}</p>
+				    <img height="300" width="300" alt="{{object.name}}" src="{{ object.photo.url}}"/>
+
+				   <p>Size : {{object.shape_area}}</p>
+				   <p>Landuse : {{object.desinated}}</p>
+
+				   <p><h2><strong>{{ object.objectid }}'s Location</strong></h2></p>
+				   <img height="400" width="400" alt="{{object.geom}}" src="https://maps.googleapis.com/maps/api/staticmap?center={{ object.geom}}&size=400x400&maptype=terrain&scale=2"/>    
+				  </div>
+				  <a class="btn btn-large btn-primary" href="{% url "buy" %}">Purchase {{object.name}}</a>
+				  <a class="btn btn-large btn-primary" href="{% url "developerinfo" %}">Back to parcels list</a>
+				
+			</div>
+		</div>
+	
+</div>
+</div>
+{% endblock %}
